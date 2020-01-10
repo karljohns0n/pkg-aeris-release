@@ -1,6 +1,6 @@
 Name:			aeris-release       
 Version:		1.0 
-Release:		5%{?dist}
+Release:		6%{?dist}
 
 Summary:		Aeris Network Packages repository configuration
 
@@ -30,6 +30,8 @@ GPG key as well as configuration for yum.
 
 %{?el6:%{__sed} -i 's_@RELEASE@_6_' *.repo}
 %{?el7:%{__sed} -i 's_@RELEASE@_7_' *.repo}
+%{?el8:%{__sed} -i 's_@RELEASE@_8_' *.repo}
+%{?el8:%{__sed} -i '/priority/a module_hotfixes=1' *.repo}
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -48,6 +50,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Wed Jan 8 2020 Karl Johnson <karljohnson.it@gmail.com> - 1.0-6
+- Add CentOS 8 support
+
 * Tue Jan 15 2019 Karl Johnson <kjohnson@aerisnetwork.com> - 1.0-5
 - Switch repo URL to HTTPS
 
