@@ -1,7 +1,7 @@
-# Aeris-Release
+# Aeris-release
 
 [![ProjectStatus](https://img.shields.io/badge/status-active-brightgreen.svg)](#)
-[![Build](https://img.shields.io/travis/karljohns0n/nginx-more/master.svg)](https://travis-ci.org/karljohns0n/pkg-aeris-release)
+[![Build](https://img.shields.io/travis/karljohns0n/pkg-aeris-release/master.svg)](https://travis-ci.org/karljohns0n/pkg-aeris-release)
 [![Release 1.0-6](https://img.shields.io/badge/release-1.0--6-success.svg)](#)
 [![Change Log](https://img.shields.io/badge/change-log-blue.svg?style=flat)](https://repo.aerisnetwork.com/stable/centos/6/x86_64/repoview/aeris-release.html)
 
