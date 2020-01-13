@@ -1,4 +1,4 @@
-## Aeris-Release
+# Aeris-Release
 
 [![ProjectStatus](https://img.shields.io/badge/status-active-brightgreen.svg)](#)
 [![Build](https://img.shields.io/travis/karljohns0n/nginx-more/master.svg)](https://travis-ci.org/karljohns0n/pkg-aeris-release)
@@ -12,7 +12,7 @@ Get started with Aeris Network packages by installing the repository:
 ```bash
 CentOS 6 > yum -y install https://repo.aerisnetwork.com/pub/aeris-release-6.rpm
 CentOS 7 > yum -y install https://repo.aerisnetwork.com/pub/aeris-release-7.rpm
-CentOS 8 > yum -y install https://repo.aerisnetwork.com/pub/aeris-release-8.rpm
+CentOS 8 > dnf -y install https://repo.aerisnetwork.com/pub/aeris-release-8.rpm
 ```
 
 To install a package which is still in the testing repo:
