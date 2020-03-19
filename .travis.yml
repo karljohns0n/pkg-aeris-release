@@ -2,11 +2,11 @@
 language: shell
 
 env:
-  - distribution: centos
+  - dist: centos
     version: 6
-  - distribution: centos
+  - dist: centos
     version: 7
-  - distribution: centos
+  - dist: centos
     version: 8
 
 services:
@@ -14,7 +14,7 @@ services:
 
 before_install:
   - docker pull karljohns0n/rpmbuild:8
-  - docker pull karljohns0n/rpmbuild:"${version}"
+  - docker pull centos:"${version}"
 
 script:
   - pkg_name=aeris-release
@@ -32,8 +32,18 @@ script:
   - docker rm -f "${container_id}"
 
   # Test package
-  - docker run --name "${container_id}" --detach --privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro --volume="${PWD}":/tmp/"${pkg_name}" karljohns0n/rpmbuild:"${version}"
-  - docker exec "${container_id}" yum install -y /tmp/"${pkg_name}"/RPMS/"${pkg_name}"-"${pkg_version}"-"${pkg_release}".el"${version}"."${pkg_arch}".rpm
+  - docker run --name "${container_id}" -t --detach --privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro --volume="${PWD}":/tmp/"${pkg_name}" centos:"${version}"
+  - docker exec "${container_id}" yum -y install /tmp/"${pkg_name}"/RPMS/"${pkg_name}"-"${pkg_version}"-"${pkg_release}".el"${version}"."${pkg_arch}".rpm
   - docker exec "${container_id}" yum --disablerepo="*" --enablerepo="aeris" list available
   - docker exec "${container_id}" yum --disablerepo="*" --enablerepo="aeris-testing" list available
+  - docker rm -f "${container_id}"
+
+  # Test nginx-more yum installation using this aeris-release
+  - docker run --name "${container_id}" -t --detach --privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro --volume="${PWD}":/tmp/"${pkg_name}" centos:"${version}"
+  - docker exec "${container_id}" yum -y install /tmp/"${pkg_name}"/RPMS/"${pkg_name}"-"${pkg_version}"-"${pkg_release}".el"${version}"."${pkg_arch}".rpm
+  - docker exec "${container_id}" yum -y install nginx-more
+  - docker exec "${container_id}" /usr/sbin/nginx && sleep 5
+  - docker exec "${container_id}" curl -s -I http://127.0.0.1
+  - docker exec "${container_id}" cat /var/log/nginx/error.log
+  - docker exec "${container_id}" yum remove -y nginx-more
   - docker rm -f "${container_id}"

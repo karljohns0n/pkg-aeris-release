@@ -1,6 +1,6 @@
 Name:			aeris-release       
 Version:		1.0 
-Release:		6%{?dist}
+Release:		7%{?dist}
 
 Summary:		Aeris Network Packages repository configuration
 
@@ -17,6 +17,10 @@ BuildRoot:		%{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildArch:		noarch
 Provides:		aeris
+
+%{?el6:Requires: epel-release = 6}
+%{?el7:Requires: epel-release = 7}
+%{?el8:Requires: epel-release = 8}
 
 %description
 This package contains the Aeris Network Packages repository
@@ -50,6 +54,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Thu Mar 19 2020 Karl Johnson <karljohnson.it@gmail.com> - 1.0-7
+- Require EPEL for all CentOS version
+
 * Wed Jan 8 2020 Karl Johnson <karljohnson.it@gmail.com> - 1.0-6
 - Add CentOS 8 support
 
