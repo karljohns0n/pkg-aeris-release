@@ -1,6 +1,6 @@
 Name:			aeris-release       
 Version:		1.0 
-Release:		7%{?dist}
+Release:		8%{?dist}
 
 Summary:		Aeris Network Packages repository configuration
 
@@ -10,7 +10,7 @@ Vendor:			Aeris Network Packages
 URL:			https://repo.aerisnetwork.com
 
 Source0:		RPM-GPG-KEY-AERIS
-Source1:		aeris.repo.centos
+Source1:		aeris.repo.el
 Source2:		AERIS-PACKAGES-EUA
 
 BuildRoot:		%{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
@@ -54,6 +54,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Fri Nov 12 2021 Karl Johnson <karljohnson.it@gmail.com> - 1.0-8
+- Rename CentOS to EL
+
 * Thu Mar 19 2020 Karl Johnson <karljohnson.it@gmail.com> - 1.0-7
 - Require EPEL for all CentOS version
 
