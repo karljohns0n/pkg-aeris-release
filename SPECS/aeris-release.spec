@@ -35,7 +35,7 @@ GPG key as well as configuration for yum.
 %{?el6:%{__sed} -i 's_@RELEASE@_6_' *.repo}
 %{?el7:%{__sed} -i 's_@RELEASE@_7_' *.repo}
 %{?el8:%{__sed} -i 's_@RELEASE@_8_' *.repo}
-%{?el8:%{__sed} -i '/priority/a module_hotfixes=1' *.repo}
+%{?el8:%{__sed} -i '/priority/c module_hotfixes=1' *.repo}
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -56,6 +56,7 @@ rm -rf $RPM_BUILD_ROOT
 %changelog
 * Fri Nov 12 2021 Karl Johnson <karljohnson.it@gmail.com> - 1.0-8
 - Rename CentOS to EL
+- Remove failovermethod for EL8
 
 * Thu Mar 19 2020 Karl Johnson <karljohnson.it@gmail.com> - 1.0-7
 - Require EPEL for all CentOS version
