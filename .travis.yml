@@ -8,11 +8,11 @@ env:
   - dist: centos
     version: 7
     pkg_arch: noarch
-  - dist: almalinux
+  - dist: rockylinux
     version: 8
     pkg_arch: noarch
-  - dist: rockylinux/rockylinux
-    version: 8
+  - dist: rockylinux
+    version: 9
     pkg_arch: noarch
 
 services:

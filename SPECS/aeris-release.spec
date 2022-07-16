@@ -1,6 +1,6 @@
 Name:			aeris-release       
 Version:		1.0 
-Release:		8%{?dist}
+Release:		9%{?dist}
 
 Summary:		Aeris Network Packages repository configuration
 
@@ -21,6 +21,7 @@ Provides:		aeris
 %{?el6:Requires: epel-release = 6}
 %{?el7:Requires: epel-release = 7}
 %{?el8:Requires: epel-release = 8}
+%{?el9:Requires: epel-release = 9}
 
 %description
 This package contains the Aeris Network Packages repository
@@ -35,7 +36,10 @@ GPG key as well as configuration for yum.
 %{?el6:%{__sed} -i 's_@RELEASE@_6_' *.repo}
 %{?el7:%{__sed} -i 's_@RELEASE@_7_' *.repo}
 %{?el8:%{__sed} -i 's_@RELEASE@_8_' *.repo}
+%{?el9:%{__sed} -i 's_@RELEASE@_9_' *.repo}
+
 %{?el8:%{__sed} -i '/priority/c module_hotfixes=1' *.repo}
+%{?el9:%{__sed} -i '/priority/d' *.repo}
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -54,6 +58,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Fri Jul 15 2022 Karl Johnson <karljohnson.it@gmail.com> - 1.0-9
+- Add EL 9 support
+
 * Fri Nov 12 2021 Karl Johnson <karljohnson.it@gmail.com> - 1.0-8
 - Rename CentOS to EL
 - Remove failovermethod for EL8
