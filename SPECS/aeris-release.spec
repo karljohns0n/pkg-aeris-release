@@ -12,6 +12,7 @@ URL:			https://repo.aerisnetwork.com
 Source0:		RPM-GPG-KEY-AERIS
 Source1:		aeris.repo.el
 Source2:		AERIS-PACKAGES-EUA
+Source3:		RPM-GPG-KEY-AERIS-2022
 
 BuildRoot:		%{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
@@ -29,7 +30,6 @@ GPG key as well as configuration for yum.
 
 %prep
 %setup -q  -c -T
-%{__cp} -p %{SOURCE0} .
 %{__cp} %{SOURCE1} aeris.repo
 %{__cp} -p %{SOURCE2} .
 
@@ -44,7 +44,9 @@ GPG key as well as configuration for yum.
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%{__install} -Dpm644 RPM-GPG-KEY-AERIS %{buildroot}/%{_sysconfdir}/pki/rpm-gpg/RPM-GPG-KEY-AERIS
+%{__install} -Dpm644 %{SOURCE0} %{buildroot}/%{_sysconfdir}/pki/rpm-gpg/RPM-GPG-KEY-AERIS
+%{__install} -Dpm644 %{SOURCE3} %{buildroot}/%{_sysconfdir}/pki/rpm-gpg/RPM-GPG-KEY-AERIS-2022
+
 %{__install} -Dpm644 aeris.repo %{buildroot}/%{_sysconfdir}/yum.repos.d/aeris.repo
 
 %clean
@@ -55,11 +57,12 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(-,root,root,-)
 %config(noreplace) /etc/yum.repos.d/*
 %{_sysconfdir}/pki/rpm-gpg/RPM-GPG-KEY-AERIS
-
+%{_sysconfdir}/pki/rpm-gpg/RPM-GPG-KEY-AERIS-2022
 
 %changelog
 * Fri Jul 15 2022 Karl Johnson <karljohnson.it@gmail.com> - 1.0-9
-- Add EL 9 support
+- Add EL9 support
+- New SHA512 pub key for EL9 and up
 
 * Fri Nov 12 2021 Karl Johnson <karljohnson.it@gmail.com> - 1.0-8
 - Rename CentOS to EL
