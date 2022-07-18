@@ -46,9 +46,6 @@ script:
   # Test nginx-more yum installation using this aeris-release
   - docker run --name "${container_id}" -t --detach --privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro --volume="${PWD}":/tmp/"${pkg_name}" "${dist}":"${version}"
   - docker exec "${container_id}" yum -y install /tmp/"${pkg_name}"/RPMS/"${pkg_name}"-"${pkg_version}"-"${pkg_release}".el"${version}"."${pkg_arch}".rpm
-  - docker exec "${container_id}" yum -y install nginx-more nginx-more-module-modsecurity
-  - docker exec "${container_id}" /usr/sbin/nginx && sleep 5
-  - docker exec "${container_id}" curl -s -I http://127.0.0.1
-  - docker exec "${container_id}" cat /var/log/nginx/error.log
-  - docker exec "${container_id}" yum remove -y nginx-more
+  - docker exec "${container_id}" yum -y --enablerepo=aeris-testing install aeris-tools
+  - docker exec "${container_id}" yum remove -y aeris-tools
   - docker rm -f "${container_id}"
