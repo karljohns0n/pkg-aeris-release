@@ -1,6 +1,6 @@
 Name:			aeris-release       
 Version:		1.0 
-Release:		9%{?dist}
+Release:		10%{?dist}
 
 Summary:		Aeris Network Packages repository configuration
 
@@ -44,7 +44,7 @@ GPG key as well as configuration for yum.
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%{__install} -Dpm644 %{SOURCE0} %{buildroot}/%{_sysconfdir}/pki/rpm-gpg/RPM-GPG-KEY-AERIS
+%{__install} -Dpm644 %{SOURCE3} %{buildroot}/%{_sysconfdir}/pki/rpm-gpg/RPM-GPG-KEY-AERIS
 %{__install} -Dpm644 %{SOURCE3} %{buildroot}/%{_sysconfdir}/pki/rpm-gpg/RPM-GPG-KEY-AERIS-2022
 
 %{__install} -Dpm644 aeris.repo %{buildroot}/%{_sysconfdir}/yum.repos.d/aeris.repo
@@ -60,6 +60,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_sysconfdir}/pki/rpm-gpg/RPM-GPG-KEY-AERIS-2022
 
 %changelog
+* Sun Dec 31 2023 Karl Johnson <karljohnson.it@gmail.com> - 1.0-10
+- SHA512 pub key (2022) now for EL6 to EL9
+
 * Fri Jul 15 2022 Karl Johnson <karljohnson.it@gmail.com> - 1.0-9
 - Add EL9 support
 - New SHA512 pub key for EL9 and up

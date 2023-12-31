@@ -1,15 +1,13 @@
 # Aeris Enterprise Linux RPMs
 
 [![ProjectStatus](https://img.shields.io/badge/status-active-brightgreen.svg)](#)
-[![Build](https://img.shields.io/travis/com/karljohns0n/pkg-aeris-release/master.svg)](https://app.travis-ci.com/github/karljohns0n/pkg-aeris-release)
-[![Release 1.0-9](https://img.shields.io/badge/release-1.0--9-success.svg)](#)
-[![Change Log](https://img.shields.io/badge/change-log-blue.svg?style=flat)](https://repo.aerisnetwork.com/stable/el/7/x86_64/repoview/aeris-release.html)
+[![Release 1.0-10](https://img.shields.io/badge/release-1.0--10-success.svg)](#)
 
 ## Synopsis
 
 Get started with Aeris Network packages by installing the repository, compatible with RHEL, CentOS, Rocky Linux, AlmaLinux.
 
-El6 and EL7 packages are built using CentOS, EL8 and EL9 are built using AlmaLinux.
+El6 and EL7 packages are built using CentOS, EL8 and EL9 are built using Rocky Linux.
 
 ```bash
 EL6 > yum -y install https://repo.aerisnetwork.com/pub/aeris-release-6.rpm
@@ -24,4 +22,4 @@ To install a package which is still in the testing repo:
 > yum --enablerepo=aeris-testing install nginx-more
 ```
 
-Browse [EL6](https://repo.aerisnetwork.com/stable/el/6/x86_64/), [EL7](https://repo.aerisnetwork.com/stable/el/7/x86_64/), [EL8](https://repo.aerisnetwork.com/stable/el/8/x86_64/) and [EL9](https://repo.aerisnetwork.com/stable/el/9/x86_64/) to find more information about available packages.
+Browse [Aeris Network Repository](https://repo.aerisnetwork.com/) to find more information about available packages.
