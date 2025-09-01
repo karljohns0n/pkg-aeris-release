@@ -1,6 +1,6 @@
 Name:			aeris-release       
 Version:		1.0 
-Release:		10%{?dist}
+Release:		11%{?dist}
 
 Summary:		Aeris Network Packages repository configuration
 
@@ -23,6 +23,7 @@ Provides:		aeris
 %{?el7:Requires: epel-release = 7}
 %{?el8:Requires: epel-release = 8}
 %{?el9:Requires: epel-release = 9}
+%{?el10:Requires: epel-release = 10}
 
 %description
 This package contains the Aeris Network Packages repository
@@ -37,9 +38,11 @@ GPG key as well as configuration for yum.
 %{?el7:%{__sed} -i 's_@RELEASE@_7_' *.repo}
 %{?el8:%{__sed} -i 's_@RELEASE@_8_' *.repo}
 %{?el9:%{__sed} -i 's_@RELEASE@_9_' *.repo}
+%{?el10:%{__sed} -i 's_@RELEASE@_10_' *.repo}
 
 %{?el8:%{__sed} -i '/priority/c module_hotfixes=1' *.repo}
 %{?el9:%{__sed} -i '/priority/d' *.repo}
+%{?el10:%{__sed} -i '/priority/d' *.repo}
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -60,6 +63,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_sysconfdir}/pki/rpm-gpg/RPM-GPG-KEY-AERIS-2022
 
 %changelog
+* Mon Sep 1 2025 Karl Johnson <karljohnson.it@gmail.com> - 1.0-11
+- Add EL10 support
+
 * Sun Dec 31 2023 Karl Johnson <karljohnson.it@gmail.com> - 1.0-10
 - SHA512 pub key (2022) now for EL6 to EL9
 
